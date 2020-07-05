@@ -1,0 +1,43 @@
+<h1>Results</h1>
+
+<p>
+  The word <%= @word %>
+  <% if @valid %>
+    is a valid english word
+    <% if @letter_compliance %>
+      and its using the right letters
+    <% end %>
+      but is not using only letters of the grid
+  <% elsif @letter_compliance %>
+     is using the words from the grid but is not an english word
+  <% else %>
+     is neither a valid word nor using the elements of the grid
+  <% end %>
+  and your score is <%= @score %>
+</p>
+<%= link_to 'Go back', new_path %>
+
+<!--
+ def run_game(attempt, grid, start_time, end_time)
+    result = { time: end_time - start_time }
+    # Verifies if word uses the letters from grid
+    score_and_message = score_and_message(attempt, grid, result[:time])
+    result[:score] = score_and_message.first
+    result[:message] = score_and_message.last
+    # return result hash
+    result
+  end
+
+  def score_and_message(attempt, grid, time)
+    if included?(attempt.upcase, grid)
+      if valid_word?(attempt)
+        score = compute_score(attempt, time)
+        [score, "well done"]
+      else
+        [0, "not an english word"]
+      end
+    else
+      [0, "not in the grid"]
+    end
+  end
+ -->
